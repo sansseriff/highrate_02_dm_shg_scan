@@ -105,7 +105,7 @@ class TomoCounts:
         self.rd: np.ndarray = np.zeros(4).astype("float64")
         self.rr: np.ndarray = np.zeros(4).astype("float64")
 
-        self.rate_drc_coinc = 0
+        # self.rate_drc_coinc = 0
 
     def fill(
         self,
@@ -113,7 +113,7 @@ class TomoCounts:
         coinc_list_1: np.ndarray,
         coinc_list_2: np.ndarray,
         elapsed_time: float,
-        bin_ranges: list[list[int]] = [[0, 80], [90, 150], [160, 240]],
+        bin_ranges: list[list[int]] = [[0, 75], [85, 155], [165, 240]],
     ):
         """fill a column of the array as shown in figure XX
 
@@ -217,9 +217,9 @@ class TomoCounts:
         self.Iba = entropy_vn(rho.ptrace(1), base=2) - entropy_vn(rho, base=2)
         return max(self.Iab, self.Iba)
 
-    def calculate_fidelity(self, dcr_subtraction=False):
-        if dcr_subtraction:
-            return (1 - ((self.rr[3] - self.rate_drc_coinc) / self.dd[0])) * 100
+    def calculate_fidelity(self, dcr_subtraction = None):
+        if dcr_subtraction is not None:
+            return (1 - ((self.rr[3] - dcr_subtraction) / self.dd[0])) * 100
         else:
             return (1 - (self.rr[3] / self.dd[0])) * 100
 
