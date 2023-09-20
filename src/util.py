@@ -232,7 +232,7 @@ class TomoCounts:
 
     def calculate_qber(self):
         # from https://pubs.aip.org/aip/app/article/7/1/016106/2835124/Quantum-communication-with-time-bin-entanglement
-        return (1 - self.calculate_visibility()) / 2
+        return (1 - self.calculate_visibility()/100) / 2
 
 
 def create_matrix_row(array):
