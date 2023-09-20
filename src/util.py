@@ -223,8 +223,12 @@ class TomoCounts:
         else:
             return (1 - (self.rr[3] / self.dd[0])) * 100
 
-    def calculate_visibility(self):
-        return (self.dd[0] - self.rr[3]) / (self.dd[0] + self.rr[3])
+    def calculate_visibility(self, dcr_subtraction = None):
+
+        if dcr_subtraction is not None:
+            return ((self.dd[0] - (self.rr[3] - dcr_subtraction)) / (self.dd[0] + self.rr[3] - dcr_subtraction)) * 100
+        else:
+            return ((self.dd[0] - self.rr[3]) / (self.dd[0] + self.rr[3])) * 100
 
     def calculate_qber(self):
         # from https://pubs.aip.org/aip/app/article/7/1/016106/2835124/Quantum-communication-with-time-bin-entanglement
