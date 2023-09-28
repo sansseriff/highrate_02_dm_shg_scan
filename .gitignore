@@ -4,6 +4,8 @@
 !/data/.gitkeep
 !.gitignore
 
+
+
 /papers/
 /samantha_old
 
@@ -14,4 +16,6 @@
 *.jpg
 *.jpeg
 *.png
+
+!shg_scan_dark.svg
 
